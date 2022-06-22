@@ -1,31 +1,17 @@
-// import { decodedTextSpanIntersectsWith } from "typescript";
-// import { ILoc } from "./types";
-import robot from "robotjs";
 import { move } from "./utils/move";
 import { draw } from "./utils/draw";
 
-// const commandList = [
-//   "up",
-//   "down",
-//   "left",
-//   "right",
-//   "position",
-//   "circle",
-//   "quare",
-//   "rectangle",
-// ];
 export interface ILoc {
   x: number;
   y: number;
 }
 
-export const getResult = async (data: Buffer) => {
-  const [command, ...other] = String(data).split(/_| /g);
-  const mouse = robot.getMousePos();
+export const getResult = async (loc: ILoc, data: Buffer) => {
+  const [command, ...others] = String(data).split(/_| /g);
 
-  console.log(mouse);
+  command === "mouse" ? move(loc, others) : draw(loc, others);
 
-  const result = command === "mouse" ? move(mouse, other) : draw(mouse, other);
+  // if (others[0] === "position") return mouse;
 
   // robot.moveMouse(result.x, result.y);
 
@@ -34,7 +20,7 @@ export const getResult = async (data: Buffer) => {
 
   // return importedFunc();
   console.log(command);
-  console.log(other);
+  console.log(others);
 
   // console.log("com: ", command);
   // console.log("step: ", step);

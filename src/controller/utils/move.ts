@@ -1,6 +1,7 @@
 import { ILoc } from "../controller";
+import robot from "robotjs";
 
-export const move = (loc: ILoc, data: string[]) => {
+export const move = (loc: ILoc, data: string[]): void => {
   const movement = data[0];
   const step: number = +data[1];
   let x: number = loc.x,
@@ -16,5 +17,7 @@ export const move = (loc: ILoc, data: string[]) => {
     x = loc.x + step;
   }
 
-  return { x, y };
+  robot.moveMouse(x, y);
+
+  // return { x, y };
 };

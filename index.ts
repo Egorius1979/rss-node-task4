@@ -1,6 +1,6 @@
 import Jimp from "jimp";
 import { httpServer } from "./src/http_server/index";
-// import robot from "robotjs";
+import robot from "robotjs";
 import { WebSocketServer } from "ws";
 import { getResult } from "./src/controller/controller";
 
@@ -11,15 +11,21 @@ httpServer.listen(HTTP_PORT);
 
 const wss = new WebSocketServer({ port: 8080 });
 
-wss.on("connection", (ws) => {
-  ws.on("message", (data: Buffer) => {
-    // const mouse = robot.getMousePos();
-    const resToFront = getResult(data);
-    // console.log(data.toString());
-    // const mouse = robot.getMousePos();
-    console.log(data.toString());
-    // console.log("Mouse is at x:" + mouse.x + " y:" + mouse.y);
-  });
+wss.on("connection", async (ws) => {
+  ws.on("message", async (data: Buffer) => {
+    let result;
 
-  ws.send("something");
+    // let res = robot.getMousePos();
+    // console.log(typeof res.x);
+    // const mouse = robot.getMousePos();
+
+    const mouse = robot.getMousePos();
+    // console.log(res);
+    // console.log("Mouse is at x:" + mouse.x + " y:" + mouse.y);
+    if (data.toString().includes("position")) {
+      ws.send(`mouse_position ${mouse?.x.toString()},${mouse?.y.toString()}`);
+    } else {
+      getResult(mouse, data);
+    }
+  });
 });
