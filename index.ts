@@ -11,10 +11,8 @@ httpServer.listen(HTTP_PORT);
 
 const wss = new WebSocketServer({ port: 8080 });
 
-wss.on("connection", async (ws) => {
-  ws.on("message", async (data: Buffer) => {
-    let result;
-
+wss.on("connection", (ws) => {
+  ws.on("message", (data: Buffer) => {
     // let res = robot.getMousePos();
     // console.log(typeof res.x);
     // const mouse = robot.getMousePos();
