@@ -1,7 +1,7 @@
 import robot from "robotjs";
 import { ILoc } from "../controller";
 
-export const draw = (loc: ILoc, data: string[]) => {
+export const draw = (loc: ILoc, data: string[]): void => {
   const shape: string = data[0];
   const widthOrRadius: number = +data[1];
   const height: number = +data[2];
@@ -12,7 +12,7 @@ export const draw = (loc: ILoc, data: string[]) => {
   return circle(loc, widthOrRadius);
 };
 
-function squareOrRect(loc: ILoc, width: number, height: number) {
+function squareOrRect(loc: ILoc, width: number, height: number): void {
   robot.setMouseDelay(5);
   robot.mouseToggle("down");
 

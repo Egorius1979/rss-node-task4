@@ -1,30 +1,21 @@
-# RSSchool NodeJS websocket task template
-> Static http server and base task packages.
+# Remote control
 
 ## Installation
-1. Clone/download repo
-2. `npm install`
+
+If you have problems installing via `npm`, use [yarn](https://yarnpkg.com/getting-started/install)
 
 ## Usage
+
 **Development**
 
-`npm run start:dev`
-
-* App served @ `http://localhost:8181` with nodemon
+`npm run start:dev` or `yarn start:dev`
 
 **Production**
 
-`npm run start`
+`npm run start` or `yarn start`
 
-* App served @ `http://localhost:8181` without nodemon
+To execute all commands, do not forget to switch the language to **English**
 
----
+_All functionality works 100% on Ubuntu 20.04 & Pinta graphics editor_
 
-**All commands**
-
-Command | Description
---- | ---
-`npm run dev` | App served @ `http://localhost:8181` with nodemon
-`npm run start` | App served @ `http://localhost:8181` without nodemon
-
-**Note**: replace `npm` with `yarn` in `package.json` if you use yarn.
+**Good luck!**

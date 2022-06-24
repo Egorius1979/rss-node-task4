@@ -7,7 +7,10 @@ export interface ILoc {
   y: number;
 }
 
-export const getResult = async (loc: ILoc, data: Buffer) => {
+export const getResult = async (
+  loc: ILoc,
+  data: Buffer
+): Promise<string | void> => {
   const [command, ...others] = String(data).split(/_| /g);
 
   if (command === "prnt") return getScreen();

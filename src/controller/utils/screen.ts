@@ -1,7 +1,7 @@
 import Jimp from "jimp";
 import robot from "robotjs";
 
-export const getScreen = async () => {
+export const getScreen = async (): Promise<string> => {
   const screenSize = robot.getScreenSize();
   const loc = robot.getMousePos();
   const size = 200;
