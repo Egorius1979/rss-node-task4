@@ -22,6 +22,7 @@ wss.on("connection", (ws) => {
     const [message] = chunk.split(" ");
 
     const result: string | void = await getResult(mouse, chunk);
+    console.log(`${chunk} (success)`);
     stream.write(`${message} ${result || `${mouse.x},${mouse.y}\0`}`);
   });
   // ws.on("close", () => console.log("\nthe client closed the connection"));
